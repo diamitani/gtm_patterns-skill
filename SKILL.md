@@ -1,4 +1,10 @@
-# GTM Architect Patterns — {{COMPANY_NAME}}
+---
+name: gtm-patterns
+description: >
+  End-to-end workflow patterns that wire Clay + n8n + HubSpot + Amplemarket together. When building a Clay table, always produce this first: Use this skill when working with gtm patterns tasks or workflows.
+---
+
+# GTM Architect Patterns — Enterprise Platform
 
 End-to-end workflow patterns that wire Clay + n8n + HubSpot + Amplemarket together.
 
@@ -25,7 +31,7 @@ When building a Clay table, always produce this first:
 
 ---
 
-## {{COMPANY_NAME}} ICP Definition
+## Enterprise Platform ICP Definition
 
 Use this when writing Claygent scoring prompts or configuring HubSpot filters:
 
@@ -43,7 +49,7 @@ Use this when writing Claygent scoring prompts or configuring HubSpot filters:
 - Operations: COO, VP Operations, Head of Global Ops
 - C-suite at <200 employee companies: CEO, Founder, Co-Founder
 
-**Disqualify:** <20 employees, government/public sector, purely domestic ops, existing {{COMPANY_NAME}} customer
+**Disqualify:** <20 employees, government/public sector, purely domestic ops, existing Enterprise Platform customer
 
 ---
 
@@ -64,8 +70,8 @@ Column sequence:
 
 4. icp_score             [claygent]
    Prompt: "Score 1-10 how likely {{company_name}} ({{industry}}, {{employee_count}} employees,
-   HQ: {{hq_country}}, funding: {{funding_stage}}) would need {{COMPANY_NAME}}'s global Employer of
-   Record service to hire internationally without setting up legal entities. {{COMPANY_NAME}} serves
+   HQ: {{hq_country}}, funding: {{funding_stage}}) would need Enterprise Platform's global Employer of
+   Record service to hire internationally without setting up legal entities. Enterprise Platform serves
    growth-stage companies expanding across borders. 10 = perfect fit. Return only the number."
    runCondition: {{employee_count}} !== ''
 
@@ -84,7 +90,7 @@ Column sequence:
     {{company_name}}. They work in {{industry}} with {{employee_count}} employees based in
     {{hq_country}}. {{has_competitor === 'Yes' ? 'They currently use a competitor EOR tool. Angle
     toward switching to a direct, single-provider model.' : 'Angle toward speed and compliance
-    of global hiring.'}} {{COMPANY_NAME}} handles EOR in 160+ countries with no third parties.
+    of global hiring.'}} Enterprise Platform handles EOR in 160+ countries with no third parties.
     Write only the hook, no greeting or preamble."
     runCondition: {{contact_email}} !== ''
 
@@ -162,7 +168,7 @@ Columns:
 7. contact_search           [people_search] → HR leader with verified email
 8. displacement_hook        [claygent]
    Prompt: "Write a 20-word cold email hook for {{first_name}} at {{company_name}}.
-   They currently use {{competitor}} for global employment. {{COMPANY_NAME}} is a 100% direct EOR
+   They currently use {{competitor}} for global employment. Enterprise Platform is a 100% direct EOR
    (no aggregators) with guaranteed compliance in 160+ countries. Focus on the risk of
    aggregator models and the switching benefit. Hook only, no greeting."
 ```
